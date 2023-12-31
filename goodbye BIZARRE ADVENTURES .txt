@@ -1,0 +1,183 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+
+local Window = OrionLib:MakeWindow({Name = "MuriloHub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+
+_G.AutoHeal = true
+
+
+function AutoHeal()
+while _G.AutoHeal == true do
+game:GetService("ReplicatedStorage"):WaitForChild("Main"):WaitForChild("Attacks"):WaitForChild("Heal"):FireServer()
+wait()
+end
+end
+
+
+local Tab1 = Window:MakeTab({
+	Name = "Tab1",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+local Section = Tab1:AddSection({
+	Name = "Others"
+})
+
+
+Tab1:AddToggle({
+	Name = "AutoHeal",
+	Default = false,
+	Callback = function(Value)
+		_G.AutoHeal = Value
+AutoHeal()
+	end    
+})
+
+
+_G.SpamKnives = true
+
+
+function SpamKnives()
+while _G.SpamKnives == true do
+game:GetService("ReplicatedStorage"):WaitForChild("Main"):WaitForChild("Attacks"):WaitForChild("OverHeavenKnife"):FireServer()
+wait()
+end
+end
+
+
+Tab1:AddToggle({
+	Name = "SpamKnives",
+	Default = false,
+	Callback = function(Value)
+		_G.SpamKnives = Value
+SpamKnives()
+	end    
+})
+
+
+_G.AntiTime = true
+
+
+function AntiTime()
+while _G.AntiTime  == true do
+local args = {
+    [1] = false
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Main"):WaitForChild("Remotes"):WaitForChild("Anchor"):FireServer(unpack(args))
+wait()
+end
+end
+
+
+Tab1:AddToggle({
+	Name = "AntiTime",
+	Default = false,
+	Callback = function(Value)
+		_G.AntiTime = Value
+AntiTime()
+	end    
+})
+
+
+_G.AutoDeflect = true
+
+function AutoDeflect()
+while _G.AutoDeflect == true do
+local args = {
+    [1] = true
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Moves"):WaitForChild("Return To Zero"):WaitForChild("RTZ"):FireServer(unpack(args))
+wait()
+end
+end
+
+
+Tab1:AddToggle({
+	Name = "AutoDeflect",
+	Default = false,
+	Callback = function(Value)
+		_G.AutoDeflect = Value
+AutoDeflect()
+	end    
+})
+
+
+local Section = Tab1:AddSection({
+	Name = "APENAS STAND VAMP / VAMP STAND ONLY"
+})
+
+
+_G.VampAtack1 = true
+
+
+function VampAtack1()
+while _G.VampAtack1 == true do
+game:GetService("ReplicatedStorage"):WaitForChild("Main"):WaitForChild("Vampire"):WaitForChild("SpaceEyes"):FireServer()
+wait(0.1)
+end
+end
+
+
+Tab1:AddToggle({
+	Name = "1 ATACK",
+	Default = false,
+	Callback = function(Value)
+		_G.VampAtack1 = Value
+VampAtack1()
+	end    
+})
+
+
+_G.VampAtack2 = true
+
+
+function VampAtack2()
+while _G.VampAtack2 == true do
+local args = {
+    [1] = "Standless",
+    [2] = "Freeze"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Main"):WaitForChild("Attacks"):WaitForChild("Heavy"):FireServer(unpack(args))
+wait()
+end
+end
+
+
+Tab1:AddToggle({
+	Name = "2 ATACK",
+	Default = false,
+	Callback = function(Value)
+		_G.VampAtack2 = Value
+VampAtack2()
+	end    
+})
+
+
+_G.VampAtack3 = true
+
+
+function VampAtack3()
+while _G.VampAtack3 == true do
+game:GetService("ReplicatedStorage"):WaitForChild("Main"):WaitForChild("Attacks"):WaitForChild("BS"):FireServer()
+wait()
+end
+end
+
+
+Tab1:AddToggle({
+	Name = "3 ATACK",
+	Default = false,
+	Callback = function(Value)
+		_G.VampAtack3 = Value
+VampAtack3()
+	end    
+})
+
+
+OrionLib:Init()
